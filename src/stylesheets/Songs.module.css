@@ -3,8 +3,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #121212; 
+    color: white;
+    font-family: "Arial", sans-serif;
     padding: 20px;
-    background-color: #f4f4f4; 
 }
 
 .headerSong {
@@ -15,23 +19,28 @@
     margin-bottom: 20px;
     color: #333; 
 }
+
+
+
 .container {
-    width: 90%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 20px;
+    align-items: center;
+    width: 80%;
+    max-width: 1000px;
+    background-color: #181818;
     padding: 20px;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    margin-top: 20px;
 }
 .songPlay{
     outline: none;
     border:none;
 }
 .songBox {
-    cursor:default;
+    cursor:pointer;
     width: 320px;
     background-color: #121212; 
     display: flex;
@@ -44,6 +53,7 @@
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.2); 
     color: white;
     border: 2px solid #1DB954; 
+    margin: 20px;
 }
 
 .songBox:hover {
@@ -89,21 +99,19 @@
 }
 
 .submitButton {
-    background-color: #007bff; 
-    box-sizing: border-box;
-    font-family: Verdana, sans-serif;
-    border: none;
-    color: white;
     padding: 12px 20px;
-    margin-top: 15px;
-    border-radius: 8px;
-    cursor: pointer;
+    border: none;
+    border-radius: 6px;
+    background-color: #1DB954; 
+    color: white;
     font-size: 16px;
     font-weight: bold;
-    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    margin: 10px;
 }
 
 .submitButton:hover {
-    background-color: #0056b3;
+    background-color: #1ed760;
     transform: scale(1.05);
 }
