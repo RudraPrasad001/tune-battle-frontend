@@ -21,6 +21,9 @@ function Songs(){
             {songs.data[0].length>1&&songs.data[0].map((song,index)=><div key={index} className={styles.songBox}>
                 <p className ={styles.songName}>{song.name}</p>
                 <p className = {styles.songArtist}>{song.artist}</p>
+                <iframe className={styles.songPlay} src={song.spotify_url.replace("open.spotify.com/track/", "open.spotify.com/embed/track/")} 
+                 height="80px" 
+                allowtransparency="true"></iframe>
                 </div>)}
             </div>
         </div>

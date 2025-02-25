@@ -1,23 +1,20 @@
-/* General Page Styling */
+
 .page {
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    background-color: #f4f4f4; /* Light background for contrast */
+    background-color: #f4f4f4; 
 }
 
-/* Header */
 .headerSong {
     text-align: center;
     font-family: "Verdana", Geneva, Tahoma, sans-serif;
     font-size: 24px;
     font-weight: bold;
     margin-bottom: 20px;
-    color: #333; /* Dark gray for readability */
+    color: #333; 
 }
-
-/* Container for Songs */
 .container {
     width: 90%;
     display: flex;
@@ -29,14 +26,18 @@
     border-radius: 10px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
 }
-
-/* Individual Song Box */
+.songPlay{
+    outline: none;
+    border:none;
+}
 .songBox {
-    width: 220px;
+    cursor:default;
+    width: 320px;
     background-color: #121212; 
     display: flex;
     flex-direction: column;
     padding: 20px;
+    justify-content: center;
     border-radius: 10px;
     text-align: center;
     transition: transform 0.2s ease-in-out;
@@ -51,7 +52,6 @@
     border-color: #1ed760;
 }
 
-/* Song Name */
 .songName {
     background-color: #1DB954; 
     border-radius: 5px;
@@ -63,7 +63,6 @@
     text-align: center;
 }
 
-/* Song Artist */
 .songArtist {
     background-color: #191414;
     border-radius: 5px;
@@ -75,7 +74,6 @@
 }
 
 
-/* Links */
 .link {
     align-self: center;
     margin-bottom: 20px;
