@@ -8,7 +8,7 @@ function Home(props){
     const [displaySeeSongs,setDisplay]=useState(false);
     const handleSubmit =  (e)=>{
         e.preventDefault();
-         axios.get(`http://localhost:3000/playlist/${id.substring(id.lastIndexOf('/')+1)}`)
+         axios.get(`https://tune-battle-backend.onrender.com/playlist/${id.substring(id.lastIndexOf('/')+1)}`)
          .then(
             (res)=>{
                 console.log(res.data);

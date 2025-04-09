@@ -14,8 +14,8 @@ function Test(){
         if(songsCount==1){
             console.log("you win")
         }
-          setSongs(await axios.get("http://localhost:3000/songs/getTwoSongs"));
-          let totsongsCount = await (await axios.get("http://localhost:3000/songs/getSongs")).data[0].length;
+          setSongs(await axios.get("https://tune-battle-backend.onrender.com/songs/getTwoSongs"));
+          let totsongsCount = await (await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs")).data[0].length;
           console.log(songs);
           setCount(totsongsCount);
           console.log(songsCount)
@@ -29,9 +29,9 @@ function Test(){
         }
         console.log("trying to delete not "+song._id+"   "+songs.data[0][0]._id);
         if(songs.data[0][0]._id==song._id){
-            setSongs(await axios.get(`http://localhost:3000/songs/delSong/${songs.data[0][1]._id}`));}
+            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][1]._id}`));}
         else{
-            setSongs(await axios.get(`http://localhost:3000/songs/delSong/${songs.data[0][0]._id}`));
+            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][0]._id}`));
         }
         await getSongs();
     }
