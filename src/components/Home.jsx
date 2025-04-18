@@ -23,7 +23,7 @@ function Home(props){
     }
     return(
         <div className={styles.container}>
-            <img src="https://drive.google.com/file/d/1RfovPdjURDmquakUHk2HOjTpZK_28eMB/view?usp=sharing" className={styles.tutorialImage} alt="Tutorial" />
+            <img src="https://i.postimg.cc/6qvdYvGX/tutorial.png" className={styles.tutorialImage} alt="Tutorial" />
             <div className={styles.formContainer}>
                 <form onSubmit={handleSubmit}>
                     <p className={styles.dataField}>TuneBattle</p>
