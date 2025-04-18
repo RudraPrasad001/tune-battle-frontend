@@ -24,6 +24,31 @@
     color: white;
     font-family: Arial, sans-serif;
 }
+.loaderContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+    width: 350px;
+    background: linear-gradient(-45deg, #1DB954, #191414, #1ED760, #121212);
+    background-size: 400% 400%;
+    animation: gradientAnimation 2s ease infinite;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.loaderText {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
 
 .container {
     display: flex;

@@ -10,16 +10,24 @@ function Test(){
     let [songsCount,setCount]=useState(0);
     let [visible,setVisible]=useState(false);
     let [favSong,setFavSong]=useState();
-    async function getSongs(){
-        if(songsCount==1){
-            console.log("you win")
+    let [loading, setLoading] = useState(true);
+
+    async function getSongs() {
+        setLoading(true);
+        
+        if (songsCount === 1) {
+            console.log("you win");
         }
-          setSongs(await axios.get("https://tune-battle-backend.onrender.com/songs/getTwoSongs"));
-          let totsongsCount = await (await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs")).data[0].length;
-          console.log(songs);
-          setCount(totsongsCount);
-          console.log(songsCount)
+    
+        const twoSongs = await axios.get("https://tune-battle-backend.onrender.com/songs/getTwoSongs");
+        const totsongsCount = (await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs")).data[0].length;
+    
+        setSongs(twoSongs);
+        setCount(totsongsCount);
+    
+        setLoading(false);
     }
+    
     
     async function deleteSong(song){
         
@@ -44,14 +52,43 @@ function Test(){
             
            <h1 className={styles.headerSong}>Choose your favourite song</h1>
             
-           {!visible && <div className={styles.container}>
-            { songs.data[0].length>1&&songs.data[0].map((song,index)=><div key={index} onClick={()=>{deleteSong(song)}} className={styles.songBox}>
-                <p className ={styles.songName}>{song.name}</p>
-                <p className = {styles.songArtist}>{song.artist}</p>
-                <iframe className={styles.songPlay} src={song.spotify_url.replace("open.spotify.com/track/", "open.spotify.com/embed/track/")} 
-                 height="80px"></iframe>
-                </div>)}
-                </div>}
+           {!visible && (
+    <div className={styles.container}>
+        {loading ? (
+            <>
+                <div className={styles.loaderContainer}>
+                    <p className={styles.loaderText}>Loading your bangers... 🔄</p>
+                </div>
+                <div className={styles.loaderContainer}>
+                    <p className={styles.loaderText}>Tuning up the vibe... 🎧</p>
+                </div>
+            </>
+        ) : (
+            songs.data[0].length > 1 &&
+            songs.data[0].map((song, index) => (
+                <div
+                    key={index}
+                    onClick={() => {
+                        deleteSong(song);
+                    }}
+                    className={styles.songBox}
+                >
+                    <p className={styles.songName}>{song.name}</p>
+                    <p className={styles.songArtist}>{song.artist}</p>
+                    <iframe
+                        className={styles.songPlay}
+                        src={song.spotify_url.replace(
+                            "open.spotify.com/track/",
+                            "open.spotify.com/embed/track/"
+                        )}
+                        height="80px"
+                    ></iframe>
+                </div>
+            ))
+        )}
+    </div>
+)}
+
             
                 {visible && (
         <>
