@@ -115,3 +115,58 @@
     background-color: #1ed760;
     transform: scale(1.05);
 }
+@media (max-width: 600px) {
+    .page {
+        padding: 10px;
+        min-height: auto;
+        overflow-x: hidden;
+    }
+
+    .container {
+        flex-direction: column;
+        width: 100%;
+        padding: 15px;
+        margin: 10px auto;
+        box-sizing: border-box;
+        border-radius: 10px;
+        box-shadow: none;
+        overflow-x: hidden;
+    }
+
+    .songBox {
+        width: 100%;
+        margin: 12px 0;
+        padding: 16px;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+
+    .songName {
+        font-size: 15px;
+        padding: 6px;
+    }
+
+    .songArtist {
+        font-size: 13px;
+        padding: 5px;
+    }
+
+    .submitButton {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+        margin: 12px 0;
+    }
+
+    .link {
+        font-size: 14px;
+        text-align: center;
+        margin-top: 10px;
+    }
+
+    audio.songPlay {
+        width: 100%;
+        margin-top: 10px;
+    }
+}
+
