@@ -1,10 +1,4 @@
-.container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #121212;
-}
+
 body{
     margin: 0px;
 }
@@ -25,8 +19,8 @@ body{
 }
 
 .searchField {
-    width: 100%;
-    padding: 12px;
+    width: 90%;
+    padding: 10px;
     margin: 10px 0;
     border: none;
     border-radius: 6px;
@@ -35,7 +29,18 @@ body{
     font-size: 16px;
     outline: none;
 }
-
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+    background-color: #121212;
+}
+.tutorialImage{
+    height: 100px;
+    border-radius: 10px;
+}
 .searchField::placeholder {
     color: #b3b3b3;
 }
@@ -65,4 +70,43 @@ button.submitButton {
 
 a {
     text-decoration: none;
+}
+@media (max-width: 600px) {
+    .container {
+        padding: 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .formContainer {
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        border-radius: 10px;
+    }
+
+    .dataField {
+        font-size: 32px;
+        margin-bottom: 16px;
+    }
+
+    .searchField {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .submitButton {
+        width: 100%;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .tutorialImage {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+        object-fit: cover;
+        margin-bottom: 16px;
+    }
 }
