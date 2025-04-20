@@ -19,7 +19,7 @@ function Test(){
             console.log("you win");
         }
         const twoSongs = await axios.get(`https://tune-battle-backend.onrender.com/songs/getTwoSongs?session=${sessionId}`);
-        const totsongsCount = (await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs")).data[0].length;
+        const totsongsCount = (await axios.get(`https://tune-battle-backend.onrender.com/songs/getSongs?session=${sessionId}`)).data[0].length;
     
         setSongs(twoSongs);
         setCount(totsongsCount);
