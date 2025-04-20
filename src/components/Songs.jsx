@@ -4,15 +4,25 @@
     import styles from  "../stylesheets/Songs.module.css"
     import { Link } from "react-router-dom";
     function Songs(){
-        let [songs,setSongs]=useState({data:[[{}]]});
-        async function getSongs(){
-            setSongs(await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs"));
-            
-        }
+        let [songs,setSongs]=useState();
+        let [isTrue,setTrue]=useState(false);
         useEffect(() => {
+            async function getSongs() {
+              const sessionId = localStorage.getItem("sessionId");
+              const ss = await axios.get(`https://tune-battle-backend.onrender.com/songs/getSongs`);
+              setSongs(ss.data[0]);
+            }
+          
             getSongs();
-        }, []);
-        return(
+          }, []);
+          
+          useEffect(() => {
+            if (songs) {
+              console.log("Songs loaded:", songs);
+              setTrue(true);
+            }
+          }, [songs]);
+          return(
             <div className={styles.page}>
                 <h1 className={styles.headerSong}>Songs in the Playlist</h1>
                 <Link to="/" className={styles.link}><button className={styles.submitButton}>Home</button></Link>
@@ -20,7 +30,7 @@
                 
                 <div className={styles.container}>
                 {
-                songs.data[0].length>1&&songs.data[0].map((song,index)=><div key={index} className={styles.songBox}>
+                 isTrue&&songs.length>1&&songs.map((song,index)=><div key={index} className={styles.songBox}>
                     <p className ={styles.songName}>{song.name}</p>
                     <p className = {styles.songArtist}>{song.artist}</p>
                     <iframe className={styles.songPlay} src={song.spotify_url.replace("open.spotify.com/track/", "open.spotify.com/embed/track/")} 
