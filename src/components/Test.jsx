@@ -11,14 +11,14 @@ function Test(){
     let [favSong,setFavSong]=useState();
     let [loading, setLoading] = useState(true);
 
+    const sessionId = localStorage.getItem("sessionId")
     async function getSongs() {
         setLoading(true);
         
         if (songsCount === 1) {
             console.log("you win");
         }
-    
-        const twoSongs = await axios.get("https://tune-battle-backend.onrender.com/songs/getTwoSongs");
+        const twoSongs = await axios.get(`https://tune-battle-backend.onrender.com/songs/getTwoSongs?session=${sessionId}`);
         const totsongsCount = (await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs")).data[0].length;
     
         setSongs(twoSongs);
@@ -36,9 +36,9 @@ function Test(){
         }
         console.log("trying to delete not "+song._id+"   "+songs.data[0][0]._id);
         if(songs.data[0][0]._id==song._id){
-            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][1]._id}`));}
+            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][1]._id}?session=${sessionId}`));}
         else{
-            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][0]._id}`));
+            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][0]._id}?session=${sessionId}`));
         }
         await getSongs();
     }

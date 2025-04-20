@@ -9,7 +9,7 @@
         useEffect(() => {
             async function getSongs() {
               const sessionId = localStorage.getItem("sessionId");
-              const ss = await axios.get(`https://tune-battle-backend.onrender.com/songs/getSongs`);
+              const ss = await axios.get(`https://tune-battle-backend.onrender.com/songs/getSongs?session=${sessionId}`);
               setSongs(ss.data[0]);
             }
           
