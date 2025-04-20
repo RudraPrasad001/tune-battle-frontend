@@ -2,13 +2,20 @@ import { useState } from "react";
 import axios from 'axios';
 import styles from "../stylesheets/Home.module.css"
 import { Link } from "react-router-dom";
+import { v4 as uuidv4 } from "uuid";
 function Home(props){
     const setIdd = props.func;
     const [id,setId] = useState();
     const [displaySeeSongs,setDisplay]=useState(false);
+    
+    const sessionId = localStorage.getItem("sessionId") || (() => {
+        const id = uuidv4();
+        localStorage.setItem("sessionId", id);
+        return id;
+    })();
     const handleSubmit =  (e)=>{
         e.preventDefault();
-         axios.get(`https://tune-battle-backend.onrender.com/playlist/${id.substring(id.lastIndexOf('/')+1)}`)
+         axios.get(`https://tune-battle-backend.onrender.com/playlist/${id.substring(id.lastIndexOf('/')+1)}?session=${sessionId}`)
          .then(
             (res)=>{
                 console.log(res.data);
@@ -21,6 +28,8 @@ function Home(props){
             console.log(error);
          })
     }
+
+    
     return(
         <div className={styles.container}>
             <img src="https://i.postimg.cc/6qvdYvGX/tutorial.png" className={styles.tutorialImage} alt="Tutorial" />
