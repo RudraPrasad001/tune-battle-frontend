@@ -15,9 +15,6 @@ function Test(){
     async function getSongs() {
         setLoading(true);
         
-        if (songsCount === 1) {
-            console.log("you win");
-        }
     
         const twoSongs = await axios.get(`${backend_url}/songs/getTwoSongs`);
         const totsongsCount = (await axios.get(`${backend_url}/songs/getSongs`)).data[0].length;
@@ -35,7 +32,6 @@ function Test(){
             setFavSong(song);
             setVisible(true);
         }
-        console.log("trying to delete not "+song._id+"   "+songs.data[0][0]._id);
         if(songs.data[0][0]._id==song._id){
             setSongs(await axios.get(`${backend_url}/songs/delSong/${songs.data[0][1]._id}`));}
         else{

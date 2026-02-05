@@ -12,13 +12,11 @@ function Home(props){
          axios.get(`${backend_url}/playlist/${id.substring(id.lastIndexOf('/')+1)}`)
          .then(
             (res)=>{
-                console.log(res.data);
                 setIdd(res.data);
                 setDisplay(true);
             }
          )
          .catch(error =>{
-            console.log(id.substring(id.lastIndexOf('/')+1));
             console.log(error);
          })
     }
