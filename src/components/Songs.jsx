@@ -5,8 +5,9 @@
     import { Link } from "react-router-dom";
     function Songs(){
         let [songs,setSongs]=useState({data:[[{}]]});
+        const backend_url = import.meta.env.VITE_BACKEND_URL;
         async function getSongs(){
-            setSongs(await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs"));
+            setSongs(await axios.get(`${backend_url}/songs/getSongs`));
             
         }
         useEffect(() => {

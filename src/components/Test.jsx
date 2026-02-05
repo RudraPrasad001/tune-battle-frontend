@@ -10,6 +10,7 @@ function Test(){
     let [visible,setVisible]=useState(false);
     let [favSong,setFavSong]=useState();
     let [loading, setLoading] = useState(true);
+    const backend_url = import.meta.env.VITE_BACKEND_URL;
 
     async function getSongs() {
         setLoading(true);
@@ -18,8 +19,8 @@ function Test(){
             console.log("you win");
         }
     
-        const twoSongs = await axios.get("https://tune-battle-backend.onrender.com/songs/getTwoSongs");
-        const totsongsCount = (await axios.get("https://tune-battle-backend.onrender.com/songs/getSongs")).data[0].length;
+        const twoSongs = await axios.get(`${backend_url}/songs/getTwoSongs`);
+        const totsongsCount = (await axios.get(`${backend_url}/songs/getSongs`)).data[0].length;
     
         setSongs(twoSongs);
         setCount(totsongsCount);
@@ -36,9 +37,9 @@ function Test(){
         }
         console.log("trying to delete not "+song._id+"   "+songs.data[0][0]._id);
         if(songs.data[0][0]._id==song._id){
-            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][1]._id}`));}
+            setSongs(await axios.get(`${backend_url}/songs/delSong/${songs.data[0][1]._id}`));}
         else{
-            setSongs(await axios.get(`https://tune-battle-backend.onrender.com/songs/delSong/${songs.data[0][0]._id}`));
+            setSongs(await axios.get(`${backend_url}/songs/delSong/${songs.data[0][0]._id}`));
         }
         await getSongs();
     }

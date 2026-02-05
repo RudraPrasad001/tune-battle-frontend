@@ -4,11 +4,12 @@ import styles from "../stylesheets/Home.module.css"
 import { Link } from "react-router-dom";
 function Home(props){
     const setIdd = props.func;
+    const backend_url = import.meta.env.VITE_BACKEND_URL;
     const [id,setId] = useState();
     const [displaySeeSongs,setDisplay]=useState(false);
     const handleSubmit =  (e)=>{
         e.preventDefault();
-         axios.get(`https://tune-battle-backend.onrender.com/playlist/${id.substring(id.lastIndexOf('/')+1)}`)
+         axios.get(`${backend_url}/playlist/${id.substring(id.lastIndexOf('/')+1)}`)
          .then(
             (res)=>{
                 console.log(res.data);
